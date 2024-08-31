@@ -1,0 +1,36 @@
+CREATE employees 4 string string int bool name manager salary full_time
+INSERT INTO employees 8 ROWS
+Alice Bob 70000 true
+Bob Charlie 80000 true
+Charlie NULL 90000 true
+Diana Bob 60000 false
+Evan Charlie 75000 true
+Fiona Evan 68000 true
+Gina Diana 65000 false
+Hank Fiona 72000 true
+
+GENERATE FOR employees hash INDEX ON manager
+PRINT FROM employees 4 name manager salary full_time WHERE full_time = true
+
+DELETE FROM employees WHERE full_time = false
+GENERATE FOR employees hash INDEX ON name
+
+JOIN employees E1 AND employees E2 WHERE E1.manager = E2.name AND PRINT 5 E1.name 1 E1.salary 1 E2.name 1 E2.salary 1 E1.full_time 1
+
+CREATE departments 3 string string int department head budget
+INSERT INTO departments 3 ROWS
+HR Alice 500
+Engineering Bob 600
+Sales Charlie 400
+
+JOIN employees AND departments WHERE name = head AND PRINT 5 name 1 department 1 salary 1 budget 2 full_time 1
+
+DELETE FROM departments WHERE budget < 500
+PRINT FROM departments ALL
+
+GENERATE FOR departments bst INDEX ON department
+PRINT FROM departments 3 department head budget
+
+REMOVE employees
+REMOVE departments
+QUIT

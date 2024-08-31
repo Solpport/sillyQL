@@ -1,0 +1,28 @@
+CREATE employees 4 string int string bool name age department full_time
+INSERT INTO employees 3 ROWS
+Jane 30 HR true
+Doe 40 Engineering false
+Smith 25 Sales true
+CREATE projects 3 string string int project_name department budget_in_thousands
+INSERT INTO projects 3 ROWS
+Alpha HR 100
+Beta Engineering 200
+Gamma Sales 150
+CREATE assignments 3 string string string employee_name project_name role
+INSERT INTO assignments 4 ROWS
+Jane Alpha Manager
+Doe Beta Analyst
+Smith Gamma Sales_Rep
+Doe Gamma Consultant
+GENERATE FOR employees bst INDEX ON department
+PRINT FROM projects 3 project_name department budget_in_thousands WHERE budget_in_thousands > 100
+DELETE FROM employees WHERE full_time = false
+GENERATE FOR projects hash INDEX ON department
+JOIN employees AND projects WHERE department = department AND PRINT 5 name 1 age 1 project_name 2 budget_in_thousands 2 full_time 1
+JOIN projects AND assignments WHERE project_name = project_name AND PRINT 4 project_name 1 department 1 employee_name 2 role 2
+DELETE FROM assignments WHERE role = Consultant
+PRINT FROM assignments ALL
+REMOVE employees
+REMOVE projects
+REMOVE assignments
+QUIT

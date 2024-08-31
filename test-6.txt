@@ -1,0 +1,31 @@
+CREATE students 4 string int string bool name age major active
+INSERT INTO students 5 ROWS
+Alice 20 Math true
+Bob 21 Engineering true
+Charlie 22 Physics false
+Diana 19 Biology true
+Eve 23 Chemistry true
+CREATE courses 3 string int bool course_code credits online
+INSERT INTO courses 4 ROWS
+MATH100 4 true
+ENG200 3 false
+PHYS300 4 true
+BIO400 2 true
+CREATE enrollments 3 string string string student course semester
+INSERT INTO enrollments 5 ROWS
+Alice MATH100 Fall
+Bob ENG200 Spring
+Charlie PHYS300 Fall
+Diana BIO400 Spring
+Eve MATH100 Fall
+DELETE FROM students WHERE active = false
+GENERATE FOR courses hash INDEX ON online
+GENERATE FOR students bst INDEX ON major
+JOIN students AND courses WHERE major = course_code AND PRINT 4 name 1 age 1 course_code 2 credits 2
+JOIN students AND enrollments WHERE name = student AND PRINT 4 name 1 major 1 course 2 semester 2
+PRINT FROM courses 3 course_code credits online WHERE online = true
+DELETE FROM courses WHERE online = false
+REMOVE students
+REMOVE courses
+REMOVE enrollments
+QUIT

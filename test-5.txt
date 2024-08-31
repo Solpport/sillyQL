@@ -1,0 +1,42 @@
+CREATE faculty 3 string int bool name salary tenured
+INSERT INTO faculty 5 ROWS
+Adams 70000 true
+Baker 80000 false
+Clark 75000 true
+Dunn 60000 false
+Ellis 90000 true
+
+CREATE courses 3 string string int course_id instructor credits
+INSERT INTO courses 4 ROWS
+C101 Adams 4
+C102 Baker 3
+C103 Clark 4
+C104 Dunn 3
+
+CREATE enrollments 3 string string string student course_id semester
+INSERT INTO enrollments 5 ROWS
+Student1 C101 Fall
+Student2 C102 Spring
+Student3 C103 Fall
+Student4 C104 Spring
+Student5 C101 Fall
+
+PRINT FROM faculty 3 name salary tenured WHERE tenured = true
+DELETE FROM faculty WHERE tenured = false
+GENERATE FOR faculty hash INDEX ON name
+
+PRINT FROM courses 3 course_id instructor credits WHERE credits > 3
+GENERATE FOR courses bst INDEX ON credits
+DELETE FROM courses WHERE credits < 4
+
+JOIN faculty AND courses WHERE name = instructor AND PRINT 5 name 1 salary 1 course_id 2 credits 2 tenured 1
+
+PRINT FROM enrollments ALL
+DELETE FROM enrollments WHERE semester = Spring
+GENERATE FOR enrollments hash INDEX ON course_id
+PRINT FROM enrollments 3 student course_id semester WHERE semester = Fall
+
+REMOVE faculty
+REMOVE courses
+REMOVE enrollments
+QUIT

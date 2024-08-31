@@ -1,0 +1,40 @@
+CREATE departments 3 string string int dept_name manager budget
+INSERT INTO departments 3 ROWS
+HR Alice 50000
+Engineering Bob 120000
+Marketing Charlie 75000
+
+CREATE employees 4 string string int bool name department salary full_time
+INSERT INTO employees 5 ROWS
+Alice HR 70000 true
+Bob Engineering 80000 false
+Charlie Marketing 60000 true
+Diana HR 50000 true
+Evan Engineering 90000 true
+
+GENERATE FOR departments hash INDEX ON dept_name
+GENERATE FOR employees bst INDEX ON department
+
+JOIN employees AND departments WHERE department = dept_name AND PRINT 6 name 1 department 1 salary 1 budget 2 full_time 1 manager 2
+
+DELETE FROM employees WHERE full_time = false
+PRINT FROM employees 4 name department salary full_time
+
+CREATE projects 3 string string string project_name department lead
+INSERT INTO projects 3 ROWS
+ProjectX HR Alice
+ProjectY Engineering Evan
+ProjectZ Marketing Charlie
+
+GENERATE FOR projects bst INDEX ON department
+JOIN projects AND departments WHERE department = dept_name AND PRINT 5 project_name 1 department 1 lead 1 manager 2 budget 2
+
+DELETE FROM departments WHERE budget < 100000
+PRINT FROM departments ALL
+
+JOIN employees AND projects WHERE department = department AND PRINT 5 name 1 project_name 2 salary 1 department 1 lead 2
+
+REMOVE departments
+REMOVE employees
+REMOVE projects
+QUIT

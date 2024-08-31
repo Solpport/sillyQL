@@ -1,0 +1,35 @@
+CREATE stress 3 int bool string val flag str 
+INSERT INTO stress 35 ROWS
+1 true aaa
+2 false bbb
+3 true ccc
+4 false ddd
+5 true eee
+6 false fff
+7 true ggg
+8 false hhh
+9 true iii
+10 false jjj
+11 true kkk
+12 false lll
+13 true mmm
+14 false nnn
+15 true ooo
+16 false ppp
+17 true qqq
+18 false rrr
+19 true sss
+20 false ttt
+21 true uuu
+22 false vvv
+23 true www
+24 false xxx
+25 true yyy
+26 false zzz
+27 true 111
+28 false 222
+29 true 333
+30 false 444
+31 true 555
+PRINT FROM stress 1 str WHERE flag = true
+QUIT

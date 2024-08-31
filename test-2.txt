@@ -1,0 +1,28 @@
+CREATE table1 3 string int bool
+INSERT INTO table1 3 ROWS
+"John" 30 true
+"Jane" 25 false
+"Alice" 28 true
+INSERT INTO table1 3 ROWS
+"Bob" 35 false
+"Sara" 22 true
+"David" 29 false
+CREATE table2 2 string double
+INSERT INTO table2 2 ROWS
+"John" 5000.0
+"Jane" 4500.0
+# This is a comment
+# Adding another comment
+DELETE FROM table1 WHERE string = "John"
+DELETE FROM table2 WHERE string = "Jane"
+GENERATE FOR table1 hash INDEX ON string
+GENERATE FOR table1 bst INDEX ON int
+GENERATE FOR table2 hash INDEX ON string
+GENERATE FOR table2 bst INDEX ON double
+PRINT FROM table1 3 string int bool ALL
+PRINT FROM table2 2 string double ALL
+PRINT FROM table1 3 string int bool ALL
+REMOVE table1
+REMOVE table2
+REMOVE table1
+QUIT
